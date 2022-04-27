@@ -42,7 +42,7 @@
         'views/mn_pos_tax_vatz_product_code.xml',
         'views/mn_pos_tax_order.xml',
         
-        # 'templates/l10n_mn_pos_tax_integration.xml',
+        'templates/l10n_mn_pos_tax_integration.xml',
     ],
     'qweb': [
         # 'static/src/xml/l10n_mn_pos_tax_integration.xml',
