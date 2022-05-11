@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-if='receipt.company.logo']" position="before">
+            <div><strong>Seller:</strong></div>
+        </xpath>
+
+        <xpath expr="//t[@t-if='receipt.company.vat']" position="after">
+            <div t-if="receipt.bill_type !== '0' and receipt.bill_type !== '5' ">Bill ID: <span class="es_class_bill_id" /></div>
+        </xpath>
+
+        <xpath expr="//t/t[@t-foreach='receipt.tax_details']" position="replace">
+            <t t-if="receipt.bill_type !== '0'" t-foreach="receipt.tax_details" t-as="tax" t-key="tax.name">
+                <div>
+                    <t t-esc='tax.name' />
+                    <span t-esc='env.pos.format_currency_no_symbol(tax.amount)' class="pos-receipt-right-align"/>
+                </div>
+            </t>
+        </xpath>
+
+        <xpath expr="//div[hasclass('pos-receipt-amount')]" position="before">
+            <t t-if="receipt.tax_details.length === 0">
+                VAT
+                <span t-esc='env.pos.format_currency(0)' class="pos-receipt-right-align" />
+            </t>
+        </xpath>
+
+        <xpath expr="//div[hasclass('pos-receipt-amount')]" position="replace">
+            <div class="pos-receipt-amount">
+                TOTAL
+                <span t-if="receipt.bill_type === '0'" t-esc='env.pos.format_currency(receipt.total_without_tax)' class="pos-receipt-right-align"/>
+                <span t-else="" t-esc="env.pos.format_currency(receipt.total_with_tax)" class="pos-receipt-right-align"/>
+            </div>
+        </xpath>
+
+        <xpath expr="//t[@t-if='isTaxIncluded']" position="replace">
+            <t t-if="isTaxIncluded and receipt.bill_type !== '0'">
+                <t t-foreach="receipt.tax_details" t-as="tax" t-key="tax.name">
+                    <div>
+                        <t t-esc="tax.name" />
+                        <span t-esc="env.pos.format_currency_no_symbol(tax.amount)" class="pos-receipt-right-align"/>
+                    </div>
+                </t>
+                <div>
+                    Total Taxes
+                    <span t-esc="env.pos.format_currency(receipt.total_tax)" class="pos-receipt-right-align"/>
+                </div>
+            </t>
+        </xpath>
+
+        <xpath expr="//div[hasclass('before-footer')]" position="before">
+            <t t-if='isTaxIncluded'>
+                <br />
+            </t>
+            <t t-if="receipt.bill_type === '3'">
+                <div><strong>Customer:</strong></div>
+                <div>
+                    Name: <span t-esc="receipt.client.name" />
+                </div>
+                <div>
+                    VAT number: <span t-esc="receipt.client.vat" />
+                </div>
+            </t>
+            <div t-if="receipt.bill_type === '1'" class="pos-receipt-center-align">
+                <div>
+                    Lottery: <span class="es_class_lottery" />
+                </div>
+                <img class="es_class_qr_data" />
+            </div>
+        </xpath>
+    </t>
+</templates>

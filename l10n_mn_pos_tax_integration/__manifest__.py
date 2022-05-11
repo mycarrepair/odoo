@@ -48,5 +48,6 @@
     'qweb': [
         'static/src/xml/l10n_mn_pos_tax_integration.xml',
         'static/src/xml/mn_pos_tax_tin_popup.xml',
+        'static/src/xml/OrderReceipt.xml',
     ],   
 }
