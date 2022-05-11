@@ -9,10 +9,10 @@ odoo.define('es_mongolian_ebarimt.OrderReceipt', function(require) {
             let receipt_render_env = super.receiptEnv;
             let order = this.env.pos.get_order();
 
-            receipt_render_env.receipt.bill_type = order.billType;
+            receipt_render_env.receipt.bill_type = "billType olgov";
 
             return receipt_render_env;
-        }
+        }        
     }
 
     Registries.Component.extend(OrderReceipt, EBarimtOrderReceipt);

@@ -83,7 +83,7 @@
                                         </t>
                                         <t t-if="mn_pos_tax_order.amount">
                                             <div>
-                                                <t t-set="lottery_amt" t-value="widget.format_currency(mn_pos_tax_order.amount).replace('.00', '')" />
+                                                <t t-set="lottery_amt" t-value="env.pos.format_currency(mn_pos_tax_order.amount).replace('.00', '')" />
                                                 <b>Amount:</b> <t t-esc="lottery_amt.includes('.') &#38;&#38; lottery_amt.endsWith('0') ? lottery_amt.slice(0,-1) : lottery_amt"/>
                                             </div>
                                         </t>
