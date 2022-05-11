@@ -13,7 +13,7 @@
             <t t-if="receipt.bill_type !== '0'" t-foreach="receipt.tax_details" t-as="tax" t-key="tax.name">
                 <div>
                     <t t-esc='tax.name' />
-                    <span t-esc='env.pos.format_currency_no_symbol(tax.amount)' class="pos-receipt-right-align"/>
+                    <span t-esc='env.pos.format_currency(tax.amount)' class="pos-receipt-right-align"/>
                 </div>
             </t>
         </xpath>
@@ -38,7 +38,7 @@
                 <t t-foreach="receipt.tax_details" t-as="tax" t-key="tax.name">
                     <div>
                         <t t-esc="tax.name" />
-                        <span t-esc="env.pos.format_currency_no_symbol(tax.amount)" class="pos-receipt-right-align"/>
+                        <span t-esc="env.pos.format_currency(tax.amount)" class="pos-receipt-right-align"/>
                     </div>
                 </t>
                 <div>
@@ -61,7 +61,7 @@
                     VAT number: <span t-esc="receipt.client.vat" />
                 </div>
             </t>
-            <div t-if="receipt.billType === '1'" class="pos-receipt-center-align">
+            <div class="pos-receipt-center-align">
                 <t t-if="receipt.mn_pos_tax_orders">
                     <table class="mn_pos_tax_orders">
                         <tbody>
@@ -83,7 +83,7 @@
                                         </t>
                                         <t t-if="mn_pos_tax_order.amount">
                                             <div>
-                                                <t t-set="lottery_amt" t-value="widget.format_currency_no_symbol(mn_pos_tax_order.amount).replace('.00', '')" />
+                                                <t t-set="lottery_amt" t-value="widget.format_currency(mn_pos_tax_order.amount).replace('.00', '')" />
                                                 <b>Amount:</b> <t t-esc="lottery_amt.includes('.') &#38;&#38; lottery_amt.endsWith('0') ? lottery_amt.slice(0,-1) : lottery_amt"/>
                                             </div>
                                         </t>

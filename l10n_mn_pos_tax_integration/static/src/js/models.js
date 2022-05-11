@@ -188,8 +188,9 @@ models.Order = models.Order.extend({
 
             receipt.mn_pos_tax_orders = mn_pos_tax_orders;
         }
-
+        console.log('receipt: ', receipt);
         return receipt;
+        
     },
     set_mn_pos_tax_vatpayer: function(mn_pos_tax_vatpayer) {
         this.set('mn_pos_tax_vatpayer', mn_pos_tax_vatpayer);
@@ -304,7 +305,7 @@ models.Orderline = models.Orderline.extend({
     get_mn_pos_tax_details: function(mn_pos_tax_type) {
         var self = this;
 
-        // var quantity = this.get_quantity();
+        var quantity = this.get_quantity();
         // if (this.get_discount_type() === 'percent') {
         //     var price_unit = this.get_unit_price() * (1.0 - (this.get_discount() / 100.0));
         // }
