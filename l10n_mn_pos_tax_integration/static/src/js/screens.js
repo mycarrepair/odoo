@@ -21,8 +21,9 @@ odoo.define('l10n_mn_pos_tax_integration.screens', function (require) {
                 //     body: this.env._t('Welcome to OWL'),
                 // });
                 Gui.showPopup("MnPosTaxTINPopup", {
-                    title : this.env._t("Сонголтоо хийнэ үү"),
-                    confirmText: this.env._t("Цуцлах"),
+                    title : this.env._t("Регистер ээ оруулна уу"),
+                    cancelText: this.env._t("Цуцлах"),
+                    confirmText: this.env._t("Батлах"),                    
                 });
             }
         };

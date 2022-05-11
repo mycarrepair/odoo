@@ -7,12 +7,8 @@
                    <t t-esc="props.title" />
                </p>
                <div class="selection scrollable-y">
-                    <div id="mn_pos_tax_register_tin" class="mn_pos_tax_vatpayer_button mn_pos_tax_vatpayer_button_float1" t-on-click="IsRegisterTin">
-                        <span class="js_mn_pos_tax_register_tin">TIN</span>
-                    </div>
-                    <div id="mn_pos_tax_register_ebarimt_id"  class="mn_pos_tax_vatpayer_button mn_pos_tax_vatpayer_button_float2" t-on-click="IsRegisterEbarimtId">                            
-                        <span class="js_mn_pos_tax_register_ebarimt_id">EBARIMT.MN ID</span>
-                    </div>
+                    <input id="mn_pos_tax_vatpayer_tin" type='text' t-att-value="widget.options.tin || ''" placeholder="TIN" /><br/><br/>
+                    <input id="mn_pos_tax_vatpayer_name" type='text' t-att-value="widget.options.name || ''" placeholder="NAME" /><br/><br/>
                </div>
                <div class="footer">
                    <div class="button cancel" t-on-click="confirm">
