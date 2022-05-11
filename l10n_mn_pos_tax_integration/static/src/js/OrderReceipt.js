@@ -9,7 +9,7 @@ odoo.define('es_mongolian_ebarimt.OrderReceipt', function(require) {
             let receipt_render_env = super.receiptEnv;
             let order = this.env.pos.get_order();
 
-            receipt_render_env.receipt.bill_type = order.bill_type;
+            receipt_render_env.receipt.bill_type = order.billType;
 
             return receipt_render_env;
         }
