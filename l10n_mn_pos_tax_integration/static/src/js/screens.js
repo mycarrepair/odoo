@@ -26,9 +26,7 @@ odoo.define('l10n_mn_pos_tax_integration.screens', function (require) {
                 });
             }
 
-            async _isOrderValid(isForceValidate) {
-                if (!this._super(force_validation))
-                    return false;
+            async _isOrderValid() {
                     
                 var self = this;
                 var order = this.currentOrder;
@@ -286,8 +284,8 @@ odoo.define('l10n_mn_pos_tax_integration.screens', function (require) {
 
                         seller_tin = false;
                         seller_id = false;
-                        if (this.pos.company.mn_pos_tax_multi_sellers) {
-                            seller_tin = this.pos.company.vat;
+                        if (this.env.pos.company.mn_pos_tax_multi_sellers) {
+                            seller_tin = this.env.pos.company.vat;
                             if (!seller_tin) {
                                 this.gui.show_popup('error',{
                                     'title': _t('TIN is required'),
@@ -402,7 +400,7 @@ odoo.define('l10n_mn_pos_tax_integration.screens', function (require) {
                         }
                     }
 
-                    if (this.pos.company.mn_pos_tax_multi_sellers) {
+                    if (this.env.pos.company.mn_pos_tax_multi_sellers) {
                         for (var tin in ticket_lines_seller) {
                             ticket = {
                                 'amount': ticket_lines_seller[tin].amount_total.toFixed(2),
@@ -470,7 +468,7 @@ odoo.define('l10n_mn_pos_tax_integration.screens', function (require) {
                     }
                 }
 
-                if (this.pos.company.mn_pos_tax_multi_sellers) {
+                if (this.env.pos.company.mn_pos_tax_multi_sellers) {
                     ticket = {
                         'group': true,
                         'vat': vat_total.toFixed(2),
