@@ -9,8 +9,7 @@ odoo.define('l10n_mn_pos_tax_integration.screens', function (require) {
     const Registries = require('point_of_sale.Registries');
     const PaymentScreen = require('point_of_sale.PaymentScreen');
     
-    const CustomButtonPaymentScreen = (PaymentScreen) =>
-        class extends PaymentScreen {
+    const CustomButtonPaymentScreen = (PaymentScreen) => class extends PaymentScreen {
             constructor() {
                 super(...arguments);
             }
@@ -25,6 +24,17 @@ odoo.define('l10n_mn_pos_tax_integration.screens', function (require) {
                     confirmText: this.env._t("Батлах"),
                     cancelText: this.env._t("Цуцлах"),
                 });
+            }
+
+            async _isOrderValid() {
+                var proxyURL = 'http://' + this.pos.config.mn_pos_tax_proxy_ip + ':' + this.pos.config.mn_pos_tax_proxy_port;
+                console.log('proxyURL: ', proxyURL);
+
+                if (!this.currentOrder.get_client()) {
+                    console.log('get_client: ', '---No2---');
+                } else {
+                    return super._isOrderValid();
+                }
             }
         };
     
