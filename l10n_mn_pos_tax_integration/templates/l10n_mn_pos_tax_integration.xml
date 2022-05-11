@@ -8,8 +8,9 @@
             <script type="text/javascript" src="/l10n_mn_pos_tax_integration/static/lib/qrcodegen.js"/>
             
             <script type="text/javascript" src="/l10n_mn_pos_tax_integration/static/src/js/db.js"/>
-            <!-- <script type="text/javascript" src="/l10n_mn_pos_tax_integration/static/src/js/models.js"/>                        
-            <script type="text/javascript" src="/l10n_mn_pos_tax_integration/static/src/js/screens.js"/>             -->
+            <script type="text/javascript" src="/l10n_mn_pos_tax_integration/static/src/js/models.js"/>
+            <script type="text/javascript" src="/l10n_mn_pos_tax_integration/static/src/js/screens.js"/>
+            <script type="text/javascript" src="/l10n_mn_pos_tax_integration/static/src/js/mn_pos_tax_tin_popup.js"/>
         </xpath>
     </template>
     

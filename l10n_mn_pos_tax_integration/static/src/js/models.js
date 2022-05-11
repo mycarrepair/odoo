@@ -9,7 +9,7 @@ var _t = core._t;
 var round_pr = utils.round_precision;
 
 models.load_fields('res.company', ['mn_pos_tax_multi_sellers']);
-models.load_fields('res.partner', ['mn_taxpayer_name']);
+
 models.load_fields('account.tax', ['mn_pos_tax_type']);
 models.load_fields('pos.category', ['mn_pos_tax_seller_id']);
 models.load_fields('pos.session', ['mn_pos_tax_register_missed_orders']);
@@ -109,7 +109,7 @@ models.Order = models.Order.extend({
         var customer = this.get_client();
         var value = null;
         if (customer && customer.vat) {
-            var customer_name = customer.mn_taxpayer_name ? customer.mn_taxpayer_name : customer.name;
+            var customer_name = customer.name;
             value = {
                 'tin': customer.vat,
                 'ebarimt_id': null,

@@ -30,12 +30,13 @@ class PosOrder(models.Model):
         return action
 
     @api.model
-    def _process_order(self, pos_order):
-        order = super(PosOrder, self)._process_order(pos_order)
-        
+    def _process_order(self, pos_order, draft=False, existing_order = False):
+        order_id = super(PosOrder, self)._process_order(pos_order, draft, existing_order)
+        order = self.env['pos.order'].browse(order_id)
         MnPosTaxOrder = self.env['mn.pos.tax.order']
         MnPosTaxOrderLine = self.env['mn.pos.tax.order.line']
-        config = order.session_id.config_id
+        import pdb;pdb.set_trace();
+        config = order.config_id
         for mn_pos_tax_order_data in pos_order['mn_pos_tax_orders']:
             if mn_pos_tax_order_data['dependency'] == 'single_bill':
                 mn_pos_tax_order = MnPosTaxOrder.create({

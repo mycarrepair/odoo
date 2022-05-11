@@ -16,7 +16,7 @@ class AccountTax(models.Model):
         ('vatx', 'VAT Exempt'),
         ('vatz', 'VAT 0%'),
         ('cct', 'Capital City Tax'),
-    ], string='Mongolian POS Tax Type', readonly=True, copy=False)
+    ], string='Mongolian POS Tax Type', copy=False) # readonly=True, 
     
     _sql_constraints = [
         ('mn_pos_tax_type_uniq', 'unique(mn_pos_tax_type, company_id)', 'Mongolian POS Tax Type should be unique!')
