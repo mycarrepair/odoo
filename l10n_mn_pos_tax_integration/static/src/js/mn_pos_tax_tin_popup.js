@@ -13,37 +13,18 @@ odoo.define('l10n_mn_pos_tax_integration.MnPosTaxTINPopup', function (require) {
     class MnPosTaxTINPopup extends AbstractAwaitablePopup {
         constructor() {
             super(...arguments);
-            useListener('click-product', this._clickProduct);
         }
-        //To get coupon products category
-        get productsToDisplay() {
-            return this.env.pos.db.get_product_by_category(this.env.pos.config.category_id[0]);
-        }
-        get currentOrder() {
-            return this.env.pos.get_order();
-        }
-        //get products details in orderlines when clicking on popup product
-        async _clickProduct(event) {
-            if (!this.currentOrder) {
-                this.env.pos.add_new_order();
-            }
-            console.log("bbb")
-            const product = event.detail;
-            let price_extra = 0.0;
-            let description, packLotLinesToEdit;
-            // Add the product after having the extra information.
-            this.currentOrder.add_product(product, {
-                description: description,
-            });
+        click_confirm() {
+            console.log('click_confirm: ', click_confirm);
         }
     }
     
-    //Create products popup
+    //Create payment popup
     MnPosTaxTINPopup.template = 'MnPosTaxTINPopup';
     MnPosTaxTINPopup.defaultProps = {
         confirmText: 'Ok',
         cancelText: 'Cancel',
-        title: 'Сонголтоо хийнэ үү',
+        title: 'Регитер оруулна уу?',
         body: '',
     };
 
