@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
-   <!-- <t t-name="MnPosTaxTINPopup" owl="1">
+   <t t-name="MnPosTaxTINPopup" owl="1">
        <div role="dialog" class="modal-dialog">
            <div class="popup mn_pos_tax_vatpayer_popup">
                <p class="title">
@@ -21,9 +21,9 @@
                </div>
            </div>
        </div>
-   </t> -->
+   </t>
 
-   <t t-name="MnPosTaxTINPopup" owl="1">
+   <!-- <t t-name="MnPosTaxTINPopup" owl="1">
         <div role="dialog" class="modal-dialog">
             <div class="popup popup-textinput">
                 <p class="title"><t t-esc=" widget.options.title || '' " /><br/></p>
@@ -41,5 +41,5 @@
                 </div>
             </div>
         </div>
-    </t>
+    </t> -->
 </templates>

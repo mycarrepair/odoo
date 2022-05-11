@@ -26,7 +26,9 @@ odoo.define('l10n_mn_pos_tax_integration.screens', function (require) {
                 });
             }
         };
-   Registries.Component.extend(PaymentScreen, CustomButtonPaymentScreen);
-   return CustomButtonPaymentScreen;
+    
+    Registries.Component.extend(PaymentScreen, CustomButtonPaymentScreen);
+
+    return CustomButtonPaymentScreen;
 
 });

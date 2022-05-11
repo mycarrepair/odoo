@@ -36,6 +36,7 @@
         'views/pos_session.xml',
         'views/pos_order.xml',
         'views/product_template.xml',
+        'views/account_tax.xml',
         
         'views/mn_pos_tax_universal_category_code.xml',
         'views/mn_pos_tax_vatx_product_code.xml',
