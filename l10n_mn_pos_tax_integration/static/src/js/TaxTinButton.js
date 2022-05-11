@@ -5,7 +5,7 @@ odoo.define('l10n_mn_pos_tax_integration.TaxTinButton', function (require) {
     const AbstractAwaitablePopup =    require('point_of_sale.AbstractAwaitablePopup');
     const Registries = require('point_of_sale.Registries');
     const ProductItem = require('point_of_sale.ProductItem');
-    const ProductScreen = require('point_of_sale.ProductScreen');
+    const PaymentScreen = require('point_of_sale.PaymentScreen');
 
     class TaxTinButton extends PosComponent{
         IsRegisterTin() {
