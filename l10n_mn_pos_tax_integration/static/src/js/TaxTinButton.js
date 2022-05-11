@@ -1,5 +1,6 @@
-odoo.define('l10n_mn_pos_tax_integration.TaxTinButton', function (require) {
-    "use strict";
+odoo.define('l10n_mn_pos_tax_integration.taxtinbutton', function (require) {
+"use strict";
+
     const { Gui } = require('point_of_sale.Gui');
     const PosComponent  = require('point_of_sale.PosComponent');
     const AbstractAwaitablePopup =    require('point_of_sale.AbstractAwaitablePopup');
@@ -7,30 +8,18 @@ odoo.define('l10n_mn_pos_tax_integration.TaxTinButton', function (require) {
     const ProductItem = require('point_of_sale.ProductItem');
     const PaymentScreen = require('point_of_sale.PaymentScreen');
 
-    class TaxTinButton extends PosComponent{
-        IsRegisterTin() {
-            //Gui.showPopup("MnPosTaxTINPopupWidget", {
-            //    title : this.env._t("Сонголтоо хийнэ үү"),
-            //    confirmText: this.env._t("Цуцлах"),
-            //});
-            console.log("Click Register TIN");
+    const TaxTinButton = (PaymentScreen) =>
+        class extends PaymentScreen {
+            constructor() {
+                super(...arguments);
+            }
+            IsRegisterTin() {
+                console.log("Click Register TIN");
+            }
+            IsRegisterEbarimtId() {                
+                console.log("Click IsRegister Ebarimt Id");
+            }
         }
-        IsRegisterEbarimtId() {
-            //Gui.showPopup("MnPosTaxTINPopupWidget", {
-            //    title : this.env._t("Сонголтоо хийнэ үү"),
-            //    confirmText: this.env._t("Цуцлах"),
-            //});
-            console.log("Click IsRegister Ebarimt Id");
-        }
-    }
-        
-    //Add coupon button and set visibility
-    PaymentScreen.addControlButton({
-        component: TaxTinButton,
-        condition: function() {
-            return true;
-        },
-    });
     
     Registries.Component.extend(PaymentScreen, TaxTinButton);
 
