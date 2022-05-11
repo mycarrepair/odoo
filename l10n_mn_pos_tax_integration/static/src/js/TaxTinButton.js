@@ -1,4 +1,4 @@
-odoo.define('pos_Coupons.CouponButton', function (require) {
+odoo.define('l10n_mn_pos_tax_integration.TaxTinButton', function (require) {
     "use strict";
     const { Gui } = require('point_of_sale.Gui');
     const PosComponent  = require('point_of_sale.PosComponent');
