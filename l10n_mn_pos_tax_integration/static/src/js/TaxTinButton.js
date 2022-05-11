@@ -31,7 +31,8 @@ odoo.define('l10n_mn_pos_tax_integration.TaxTinButton', function (require) {
             return true;
         },
     });
-    Registries.Component.add(TaxTinButton);
+    
+    Registries.Component.extend(PaymentScreen, TaxTinButton);
 
     return TaxTinButton;
-   });
+});
