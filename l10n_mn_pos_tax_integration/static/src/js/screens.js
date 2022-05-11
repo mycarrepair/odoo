@@ -27,8 +27,8 @@ odoo.define('l10n_mn_pos_tax_integration.screens', function (require) {
             }
 
             async _isOrderValid() {
-                var proxyURL = 'http://' + this.pos.config.mn_pos_tax_proxy_ip + ':' + this.pos.config.mn_pos_tax_proxy_port;
-                console.log('proxyURL: ', proxyURL);
+                var proxyURL = 'http://127.0.0.1:4080';
+                console.log('this: ', this);
 
                 if (!this.currentOrder.get_client()) {
                     console.log('get_client: ', '---No2---');
