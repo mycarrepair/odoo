@@ -30,9 +30,6 @@ class PosConfig(models.Model):
         ], string='Province/District', required=True, default='24',
         help='Province or District where this POS belongs to')    
     
-    _sql_constraints = [
-        ('mn_pos_tax_posno_uniq', 'unique(mn_pos_tax_posno)', 'POS No should be unique!')
-    ]
     mn_pos_tax_hide_lottery_after_first_print = fields.Boolean(string='Эхний хэвлэлтийн дараа сугалаа харагдахгүй', default=True)
     
     
@@ -43,8 +40,6 @@ class PosConfig(models.Model):
             if not (length == 3 and config.mn_pos_tax_branchno.isdigit()):
                 raise ValidationError(_('Branch No should be 3 digits, e.g, 001, 010 and 101.'))
     
-    
-    @api.constrains('mn_pos_tax_posno')
     def _check_mn_pos_tax_posno(self):
         for config in self:
             length = len(config.mn_pos_tax_posno)
