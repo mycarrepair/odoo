@@ -7,13 +7,16 @@
                    <t t-esc="props.title" />
                </p>
                <div class="selection scrollable-y">
-                    <input id="mn_pos_tax_vatpayer_tin" type='text' t-att-value="widget.options.tin || ''" placeholder="TIN" /><br/><br/>
-                    <input id="mn_pos_tax_vatpayer_name" type='text' t-att-value="widget.options.name || ''" placeholder="NAME" /><br/><br/>
+                    <input id="mn_pos_tax_vatpayer_tin" type='text' placeholder="TIN" /><br/><br/>
+                    <input id="mn_pos_tax_vatpayer_name" type='text' placeholder="NAME" /><br/><br/>
                </div>
                <div class="footer">
-                   <div class="button cancel" t-on-click="confirm">
-                       <t t-esc="props.confirmText" />
-                   </div>
+                    <div class="button confirm" t-on-click="click_confirm">
+                        <t t-esc="props.confirmText" />
+                    </div>
+                    <div class="button cancel" t-on-click="cancel">
+                        <t t-esc="props.cancelText" />
+                    </div>                   
                </div>
            </div>
        </div>
