@@ -13,11 +13,4 @@
             <script type="text/javascript" src="/l10n_mn_pos_tax_integration/static/src/js/OrderReceipt.js"/>
         </xpath>
     </template>
-    
-    <!-- <template id="assets_backend" inherit_id="web.assets_backend">
-        <xpath expr="." position="inside">
-            <script type="text/javascript" src="/l10n_mn_pos_tax_integration/static/src/js/form_widgets.js"/>
-            <script type="text/javascript" src="/l10n_mn_pos_tax_integration/static/src/js/kanban_record.js"/>
-        </xpath>
-    </template> -->
 </odoo>
