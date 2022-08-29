@@ -13,35 +13,24 @@ odoo.define('l10n_mn_pos_tax_integration.screens', function (require) {
             constructor() {
                 super(...arguments);
             }
-            IsCustomButton() {
-                // click_invoice
-                // Gui.showPopup("ErrorPopup", {
-                //     title: this.env._t('Payment Screen Custom Button Clicked'),
-                //     body: this.env._t('Welcome to OWL'),
-                // });
-                Gui.showPopup("MnPosTaxTINPopup", {
-                    title : this.env._t("Регистер ээ оруулна уу"),
-                    confirmText: this.env._t("Батлах"),
-                    cancelText: this.env._t("Цуцлах"),
-                });
-            }
 
             async _isOrderValid() {
                     
                 var self = this;
                 var order = this.currentOrder;
 
-                if (order.is_mn_pos_order())
+                if (!self.env.pos.config.mn_pos_tax_proxy_ip)
                     return true;
 
-                var mn_pos_tax_vatpayer = order.get_mn_pos_tax_vatpayer();
+                // var mn_pos_tax_vatpayer = order.get_mn_pos_tax_vatpayer();
+                var mn_pos_tax_vatpayer = order.get_client();
 
                 var tickets = this.process_mn_pos_tax_tickets(mn_pos_tax_vatpayer);
 
                 if (!tickets)
                     return false;
 
-                var proxyURL = 'http://127.0.0.1:8050';                
+                var proxyURL = 'http://' + self.env.pos.config.mn_pos_tax_proxy_ip + ':' + self.env.pos.config.mn_pos_tax_proxy_port;                
 
                 $.ajax({
                     type: 'POST',
@@ -232,13 +221,13 @@ odoo.define('l10n_mn_pos_tax_integration.screens', function (require) {
 
                 // if (order.is_credit_sales()) {
                 //     billType = '5';
-                //     customerNo = (mn_pos_tax_vatpayer ? mn_pos_tax_vatpayer.tin : '1000000');
+                //     customerNo = (mn_pos_tax_vatpayer ? mn_pos_tax_vatpayer.vat : '1000000');
                 // }
                 // else
                 if (mn_pos_tax_vatpayer) {
-                    if (mn_pos_tax_vatpayer.tin) {
+                    if (mn_pos_tax_vatpayer.vat) {
                         billType = '3';
-                        customerNo = mn_pos_tax_vatpayer.tin;
+                        customerNo = mn_pos_tax_vatpayer.vat;
                     }
                     else if (mn_pos_tax_vatpayer.ebarimt_id) {
                         billType = '1';
@@ -250,7 +239,7 @@ odoo.define('l10n_mn_pos_tax_integration.screens', function (require) {
                 }
 
                 if (this.env.pos.pos_session.mn_pos_tax_register_missed_orders) {
-                    var date_missed_orders = new Date(this.pos.pos_session.mn_pos_tax_date_missed_orders);
+                    var date_missed_orders = new Date(this.env.pos.pos_session.mn_pos_tax_date_missed_orders);
                     reportMonth = date_missed_orders.getFullYear().toString() + '-' + getTwoDigitString(date_missed_orders.getMonth() + 1);
                 }
 
@@ -493,13 +482,6 @@ odoo.define('l10n_mn_pos_tax_integration.screens', function (require) {
                     'ticket_vatZ': ticket_vatZ,
                     'mn_pos_tax_lines_vatZ': mn_pos_tax_lines_vatZ,
                 };
-            }
-            click_set_mn_pos_tax_vatpayer() {
-                var self = this;
-
-                self.gui.show_popup('mn_pos_tax_vatpayer_popup_widget',{
-                    'title': _t('Tax Payer'),
-                });
             }
         };
     

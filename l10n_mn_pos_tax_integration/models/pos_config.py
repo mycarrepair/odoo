@@ -6,14 +6,14 @@ from odoo.exceptions import ValidationError
 class PosConfig(models.Model):
     _inherit = 'pos.config'
     
-    mn_pos_tax_proxy_ip = fields.Char('Proxy IP', size=45, required=True,
+    mn_pos_tax_proxy_ip = fields.Char('Proxy IP', size=45,
         default='127.0.0.1', help='IP address of the PosApi Proxy, e.g, 127.0.0.1 or 192.168.1.11.')
-    mn_pos_tax_proxy_port = fields.Integer('Proxy Port', required=True,
+    mn_pos_tax_proxy_port = fields.Integer('Proxy Port',
         default=48800, help='Port of the PosApi Proxy.')
     
-    mn_pos_tax_branchno = fields.Char(string='Branch No', size=3, required=True, copy=False,
+    mn_pos_tax_branchno = fields.Char(string='Branch No', size=3, copy=False,
         default='001', help='Branch No should be 3 digits!')
-    mn_pos_tax_posno = fields.Char(string='POS No', size=6, required=True, copy=False,
+    mn_pos_tax_posno = fields.Char(string='POS No', size=6, copy=False,
         default='000001', help='POS No should be 6 digits!')
     mn_pos_tax_districtcode = fields.Selection(
         [
@@ -27,7 +27,7 @@ class PosConfig(models.Model):
             ('23','Han-Uul district'), ('24', 'Bayanzurh district'), ('25', 'Suhbaatar district'),
             ('26','Bayangol district'), ('27', 'Baganuur district'), ('28', 'Bagahangai district'),
             ('29','Nalaih district'), ('34', 'Songinohairhan district'), ('35', 'Chingeltei district')
-        ], string='Province/District', required=True, default='24',
+        ], string='Province/District', default='24',
         help='Province or District where this POS belongs to')    
     
     mn_pos_tax_hide_lottery_after_first_print = fields.Boolean(string='Эхний хэвлэлтийн дараа сугалаа харагдахгүй', default=True)
