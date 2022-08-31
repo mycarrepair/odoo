@@ -13,18 +13,18 @@ class ResConfiguration(models.TransientModel):
     # Public fields
     #===========================================================================    
     mn_pos_tax_vat_id = fields.Many2one('account.tax', string='VAT',
-        required=True, domain="[('type_tax_use', '=', 'sale')]")
+        domain="[('type_tax_use', '=', 'sale')]")
     mn_pos_tax_vatx_id = fields.Many2one('account.tax', string='VAT Exempt',
-        required=True, domain="[('type_tax_use', '=', 'sale')]")
+        domain="[('type_tax_use', '=', 'sale')]")
     mn_pos_tax_vatz_id = fields.Many2one('account.tax', string='VAT 0%',
-        required=True, domain="[('type_tax_use', '=', 'sale')]")
+        domain="[('type_tax_use', '=', 'sale')]")
     mn_pos_tax_cct_id = fields.Many2one('account.tax', string='CCT',
-        required=True, domain="[('type_tax_use', '=', 'sale')]")
+        domain="[('type_tax_use', '=', 'sale')]")
     
     mn_pos_tax_return_proxy_ip = fields.Char('IP Address',
-        required=True, help='IP address of the PosApi Proxy which is used for POS Order Return.', size=45)
+        help='IP address of the PosApi Proxy which is used for POS Order Return.', size=45)
     mn_pos_tax_return_proxy_port = fields.Integer('Port',
-        required=True, help='Port of the PosApi Proxy which is used for POS Order Return.')
+        help='Port of the PosApi Proxy which is used for POS Order Return.')
     
     mn_pos_tax_multi_sellers = fields.Boolean('Multi Sellers')
     
