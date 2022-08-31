@@ -36,9 +36,10 @@ class PosConfig(models.Model):
     @api.constrains('mn_pos_tax_branchno')
     def _check_mn_pos_tax_branchno(self):
         for config in self:
-            length = len(config.mn_pos_tax_branchno)
-            if not (length == 3 and config.mn_pos_tax_branchno.isdigit()):
-                raise ValidationError(_('Branch No should be 3 digits, e.g, 001, 010 and 101.'))
+            if config.mn_pos_tax_branchno:
+                length = len(config.mn_pos_tax_branchno)
+                if not (length == 3 and config.mn_pos_tax_branchno.isdigit()):
+                    raise ValidationError(_('Branch No should be 3 digits, e.g, 001, 010 and 101.'))
     
     def _check_mn_pos_tax_posno(self):
         for config in self:

@@ -53,32 +53,34 @@ models.PosModel = models.PosModel.extend({
         var taxes = this.taxes;
         var cct, vat, vatx, vatz;
 
-        vat = _.find(taxes, function(t){
-            return t.mn_pos_tax_type === "vat";
-        });
-        if (!vat) {
-            throw new Error(_t("VAT is not defined. Please set it in Configuration > Settings"));
-        }
-
-        vatx = _.find(taxes, function(t){
-            return t.mn_pos_tax_type === "vatx";
-        });
-        if (!vatx) {
-            throw new Error(_t("VAT Exempt is not defined. Please set it in Configuration > Settings"));
-        }
-
-        vatz = _.find(taxes, function(t){
-            return t.mn_pos_tax_type === "vatz";
-        });
-        if (!vatz) {
-            throw new Error(_t("VAT 0% is not defined. Please set it in Configuration > Settings"));
-        }
-
-        cct = _.find(taxes, function(t){
-            return t.mn_pos_tax_type === "cct";
-        });
-        if (!cct) {
-            throw new Error(_t("CCT is not defined. Please set it in Configuration > Settings"));
+        if(this.config.mn_pos_tax_proxy_ip){
+            vat = _.find(taxes, function(t){
+                return t.mn_pos_tax_type === "vat";
+            });
+            if (!vat) {
+                throw new Error(_t("VAT is not defined. Please set it in Configuration > Settings"));
+            }
+    
+            vatx = _.find(taxes, function(t){
+                return t.mn_pos_tax_type === "vatx";
+            });
+            if (!vatx) {
+                throw new Error(_t("VAT Exempt is not defined. Please set it in Configuration > Settings"));
+            }
+    
+            vatz = _.find(taxes, function(t){
+                return t.mn_pos_tax_type === "vatz";
+            });
+            if (!vatz) {
+                throw new Error(_t("VAT 0% is not defined. Please set it in Configuration > Settings"));
+            }
+    
+            cct = _.find(taxes, function(t){
+                return t.mn_pos_tax_type === "cct";
+            });
+            if (!cct) {
+                throw new Error(_t("CCT is not defined. Please set it in Configuration > Settings"));
+            }
         }
     },
 });
