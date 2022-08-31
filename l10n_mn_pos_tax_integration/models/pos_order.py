@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from datetime import date, datetime
+from pytz import UTC
+
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 
 class PosOrder(models.Model):
@@ -61,7 +65,7 @@ class PosOrder(models.Model):
                     'mn_pos_tax_type': mn_pos_tax_order_data['mn_pos_tax_type'],
                     'mn_pos_tax_billtype': mn_pos_tax_order_data['mn_pos_tax_billtype'],
                     'mn_pos_tax_billid': mn_pos_tax_order_data['mn_pos_tax_billid'],
-                    'mn_pos_tax_billdate': mn_pos_tax_order_data['mn_pos_tax_billdate'],
+                    'mn_pos_tax_billdate': order.date_order.strftime('%Y-%m-%d %H:%M:%S'),
                     'mn_pos_tax_customerno': mn_pos_tax_order_data['mn_pos_tax_customerno'],
                     'mn_pos_tax_customername': mn_pos_tax_order_data['mn_pos_tax_customername'],
                     'mn_pos_tax_macaddress': mn_pos_tax_order_data['mn_pos_tax_macaddress'],
@@ -87,7 +91,7 @@ class PosOrder(models.Model):
             elif mn_pos_tax_order_data['dependency'] == 'batch_bill':
                 mn_pos_tax_order = MnPosTaxOrder.create({
                     'pos_order_id': order.id,
-                    'date_order': order.date_order,
+                    'date_order': order.date_order.strftime('%Y-%m-%d %H:%M:%S'),
                     'name': order.name,
                     'bill_no': order.pos_reference,
                     'company_id': order.company_id.id,
