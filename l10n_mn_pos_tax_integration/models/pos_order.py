@@ -38,10 +38,10 @@ class PosOrder(models.Model):
         MnPosTaxOrderLine = self.env['mn.pos.tax.order.line']
         
         config = order.config_id
-        import pdb
-        mypdb=pdb.Pdb(stdin=open('fifo_stdin','r'), stdout=open('fifo_stdout','w'))
+        # import pdb
+        # mypdb=pdb.Pdb(stdin=open('fifo_stdin','r'), stdout=open('fifo_stdout','w'))
 
-        mypdb.set_trace()
+        # mypdb.set_trace()
 
         for mn_pos_tax_order_data in pos_order['mn_pos_tax_orders']:
             if mn_pos_tax_order_data['dependency'] == 'single_bill':
