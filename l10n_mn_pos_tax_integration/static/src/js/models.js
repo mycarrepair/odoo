@@ -334,7 +334,7 @@ models.Orderline = models.Orderline.extend({
             var mn_pos_tax_type = self.pos.taxes_by_id[tax.id].mn_pos_tax_type;
             if (mn_pos_tax_type) {
                 taxtype_detail[mn_pos_tax_type] = tax.amount;
-                taxtype_detail_raw[mn_pos_tax_type] = tax.amount_raw;
+                taxtype_detail_raw[mn_pos_tax_type] = tax.amount;
             }
         });
 
