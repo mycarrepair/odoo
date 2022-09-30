@@ -190,7 +190,6 @@ models.Order = models.Order.extend({
 
             receipt.mn_pos_tax_orders = mn_pos_tax_orders;
         }
-        console.log('receipt: ', receipt);
         return receipt;
         
     },

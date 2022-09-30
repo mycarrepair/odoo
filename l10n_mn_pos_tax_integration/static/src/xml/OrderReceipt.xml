@@ -52,7 +52,7 @@
             <t t-if='isTaxIncluded'>
                 <br />
             </t>
-            <t t-if="receipt.billType === '3'">
+            <t t-if="receipt.client">
                 <div><strong>Customer:</strong></div>
                 <div>
                     Name: <span t-esc="receipt.client.name" />
